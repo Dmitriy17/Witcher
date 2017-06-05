@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kyrsach", "kyrsach.csproj", "{22DB64C4-B8F2-C454-94B9-D83312776DF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kyrsach.Editor", "kyrsach.Editor.csproj", "{87D0EB40-87B2-970C-5C41-6FC2804AC625}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22DB64C4-B8F2-C454-94B9-D83312776DF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22DB64C4-B8F2-C454-94B9-D83312776DF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22DB64C4-B8F2-C454-94B9-D83312776DF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22DB64C4-B8F2-C454-94B9-D83312776DF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87D0EB40-87B2-970C-5C41-6FC2804AC625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87D0EB40-87B2-970C-5C41-6FC2804AC625}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87D0EB40-87B2-970C-5C41-6FC2804AC625}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87D0EB40-87B2-970C-5C41-6FC2804AC625}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
