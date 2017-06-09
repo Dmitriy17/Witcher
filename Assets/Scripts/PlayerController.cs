@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
@@ -23,22 +24,24 @@ public class PlayerController : MonoBehaviour {
     float fireRate = 0.5f;
     float nextFire = 0f;
     private bool checkForTab = true;
-  
+    public int countmana;
+    private PlayerHealth playerhealth;
     void Start () {
+        playerhealth = gameObject.GetComponent<PlayerHealth>();
        playanim = GetComponent<Animator>();
 
     }
     private void Update()
     {
-        if(ground && Input.GetKeyDown(KeyCode.Space))
+        if (ground && CrossPlatformInputManager.GetButtonDown("Jump"))
         {
             playanim.SetBool("Ground", false);
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0,jForce));
         }
         //player shooting
-        if(Input.GetAxisRaw("Fire1") > 0)
+        if( Input.GetAxis("Fire1")>0 )
         {
-            gofire_1();
+                gofire_1();
         }
     }
 
@@ -48,7 +51,7 @@ public class PlayerController : MonoBehaviour {
         ground = Physics2D.OverlapCircle(grCheck.position, grRadius, wiGround);
         playanim.SetBool("Ground", ground);
         playanim.SetFloat("VertSpeed", GetComponent<Rigidbody2D>().velocity.y);
-        float  move = Input.GetAxis("Horizontal");
+        float  move = CrossPlatformInputManager.GetAxis("Horizontal");
         playanim.SetFloat("speed", Mathf.Abs(move));
         GetComponent<Rigidbody2D>().velocity = new Vector2(move * maxspeed, GetComponent<Rigidbody2D>().velocity.y);
         if (move > 0 && !right)
@@ -71,17 +74,23 @@ public class PlayerController : MonoBehaviour {
     {
         if (Time.time > nextFire)
         {
-            nextFire = Time.time + fireRate;
-            if (right)
+            if (playerhealth.takeMana(countmana))
             {
-                Instantiate(fire, fireTip.position, Quaternion.Euler(new Vector3(0, 0, 0)));
-            }
-            else if(!right)
-            {
-                Instantiate(fire, fireTip.position, Quaternion.Euler(new Vector3(0, 0, 180f)));
-            }
-        }
 
+
+                nextFire = Time.time + fireRate;
+                if (right)
+                {
+                    Instantiate(fire, fireTip.position, Quaternion.Euler(new Vector3(0, 0, 0)));
+                }
+                else if (!right)
+                {
+                    Instantiate(fire, fireTip.position, Quaternion.Euler(new Vector3(0, 0, 180f)));
+                }
+
+            }
+
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

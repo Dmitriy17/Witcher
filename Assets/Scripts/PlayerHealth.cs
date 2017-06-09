@@ -6,9 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour {
     [SerializeField]
-    internal Stat healthPlayer;
+    internal Stat manaPlayer;
     [SerializeField]
+    internal Stat healthPlayer;
+  
+    [SerializeField]  
     private Text healthText;
+    [SerializeField]
+    private Text manaText;
+
     public AudioClip hit4;
     public AudioClip hit5;
     public AudioClip death;
@@ -21,7 +27,9 @@ public class PlayerHealth : MonoBehaviour {
     // Use this for initialization
     void Start() {
         healthPlayer.Initialize();
+        manaPlayer.Initialize();
         healthText.text = healthPlayer.CurrentValue.ToString();
+        manaText.text = manaPlayer.CurrentValue.ToString();
         controlMovement = GetComponent<PlayerController>();
         anim=GetComponent<Animator>();
     }
@@ -49,6 +57,15 @@ public class PlayerHealth : MonoBehaviour {
                 makeDeath();
             }
         }
+    }
+    public bool takeMana(int countmana)
+    {
+        if(manaPlayer.CurrentValue < countmana)
+        {
+            return false;
+        }
+        manaPlayer.CurrentValue = manaPlayer.CurrentValue - countmana;
+        return true;
     }
     private IEnumerator Damage()
     {
