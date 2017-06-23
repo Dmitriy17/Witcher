@@ -108,9 +108,13 @@
     <Compile Include="Assets\Scripts\StrelaFire.cs" />
     <Compile Include="Assets\Scripts\attackButton.cs" />
     <Compile Include="Assets\Scripts\cameraContr.cs" />
+    <Compile Include="Assets\Scripts\drag.cs" />
     <Compile Include="Assets\Scripts\healthButton.cs" />
     <Compile Include="Assets\Scripts\inventory\CharacterItems.cs" />
+    <Compile Include="Assets\Scripts\inventory\EnterButton.cs" />
     <Compile Include="Assets\Scripts\inventory\Invantory.cs" />
+    <Compile Include="Assets\Scripts\inventory\button.cs" />
+    <Compile Include="Assets\Scripts\inventory\drop.cs" />
     <Compile Include="Assets\Scripts\inventory\item.cs" />
     <Compile Include="Assets\Scripts\inventory\itemData.cs" />
     <Compile Include="Assets\Scripts\isVisSkillBox.cs" />

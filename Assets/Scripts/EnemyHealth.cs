@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour {
+    drop tempo_drop;
     [SerializeField]
     private Stat healthEnemy;
     public AudioClip death;
@@ -10,11 +11,12 @@ public class EnemyHealth : MonoBehaviour {
     public AudioClip hit2;
     float tempo;
     Animator anim;
-    private bool Dead = true;
+    private bool Dead = true; // ne  знаю нахуй эта переменная 
     public float pointsAfterDeath;
 
     void Start () {
         healthEnemy.Initialize();
+        tempo_drop = GetComponent<drop>();
         anim = GetComponent<Animator>();
     }
 	
@@ -39,12 +41,14 @@ public class EnemyHealth : MonoBehaviour {
             anim.SetBool("isDeath", true);
             anim.SetBool("isCharging", false);
             anim.SetBool("attack", false);
+          
             Destroy(gameObject, 1.7f);
             RageBar rageBox = GameObject.Find("rageBox").GetComponent<RageBar>();
             points pointsBox = GameObject.Find("points").GetComponent<points>();
             pointsBox.addPoints(pointsAfterDeath);
             rageBox.calculatePoints(rageBox.getPoints());
             Dead = false;
+            tempo_drop.godrop();
         }
     }
 }

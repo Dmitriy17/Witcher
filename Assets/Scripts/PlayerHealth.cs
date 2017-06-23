@@ -10,10 +10,10 @@ public class PlayerHealth : MonoBehaviour {
     [SerializeField]
     internal Stat healthPlayer;
   
-    [SerializeField]  
-    private Text healthText;
     [SerializeField]
-    private Text manaText;
+    internal Text healthText;
+    [SerializeField]
+    internal Text manaText;
 
     public AudioClip hit4;
     public AudioClip hit5;
@@ -35,8 +35,14 @@ public class PlayerHealth : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
 
+        /*manaText.text = manaPlayer.CurrentValue.ToString();
+        if (manaPlayer.CurrentValue < manaPlayer.MaxValue)
+        {
+            manaPlayer.CurrentValue = manaPlayer.CurrentValue + 0.1f;
+        }
+        */
     }
     public void addDamage(float damage)
     {
@@ -65,6 +71,7 @@ public class PlayerHealth : MonoBehaviour {
             return false;
         }
         manaPlayer.CurrentValue = manaPlayer.CurrentValue - countmana;
+       manaText.text = manaPlayer.CurrentValue.ToString();
         return true;
     }
     private IEnumerator Damage()
